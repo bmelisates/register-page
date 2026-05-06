@@ -192,5 +192,3 @@ export default function Register() {
     </Card>
   );
 }
-
-//yeni yorum

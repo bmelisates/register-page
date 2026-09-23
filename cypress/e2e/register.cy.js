@@ -45,6 +45,22 @@ describe("Register Page", () => {
   });
 
   describe("Form input validated", () => {
+    it("accepts exactly three characters and clears name errors", () => {
+      cy.get('[data-cy="ad-input"]').type("Al");
+      cy.contains(errorMessages.ad).should("be.visible");
+      cy.get('[data-cy="ad-input"]').type("i");
+      cy.contains(errorMessages.ad).should("not.exist");
+
+      cy.get('[data-cy="soyad-input"]').type("Ca");
+      cy.contains(errorMessages.soyad).should("be.visible");
+      cy.get('[data-cy="soyad-input"]').type("n");
+      cy.contains(errorMessages.soyad).should("not.exist");
+
+      cy.get('[data-cy="email-input"]').type("ali@example.com");
+      cy.get('[data-cy="password-input"]').type("Abcde123!");
+      cy.get('[data-cy="submit-button"]').should("not.be.disabled");
+    });
+
     it("Button enabled for validated inputs", () => {
       //Act
       cy.get('[data-cy="ad-input"]').type("melis");

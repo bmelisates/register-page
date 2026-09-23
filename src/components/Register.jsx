@@ -63,10 +63,10 @@ export default function Register() {
   }, [formData]);
 
   const handleChange = (e) => {
-    const { name, value } = event.target;
+    const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
     if (name == "ad" || name == "soyad") {
-      if (value.trim().length > 3) {
+      if (value.trim().length >= 3) {
         setErrors({ ...errors, [name]: false });
       } else {
         setErrors({ ...errors, [name]: true });
